@@ -1,24 +1,44 @@
 # python-project-template
 
-A lightweight Python template designed for teams using agent skills across backend, data engineering, and AI workflows.
+A Python project template that can generate a **single-purpose project root** for the stack/skill you ask for.
 
-## Included app templates
+## Why this structure
 
-- `templates/django_drf/`: starter layout for Django + Django REST Framework
-- `templates/flask/`: starter layout for Flask APIs
-- `templates/fastapi/`: starter layout for FastAPI services
+When you tell Codex/Claude to use a specific stack (for example Django + DRF) or a specific skill (for example data engineer), you should get a root folder that only contains what that project type needs.
 
-## Included skill profiles
+This repository now provides that through ready-to-copy root scaffolds and a small scaffold CLI.
 
-- `profiles/backend/`: backend service checklist
-- `profiles/data_engineer/`: data pipeline checklist
-- `profiles/ai/`: AI service checklist
+## Available scaffold types
 
-## Versioning and changelog workflow
+- `django_drf` (aliases: `django`, `drf`)
+- `flask`
+- `fastapi`
+- `data_engineer` (alias: `data`)
+- `ai`
 
-This template uses **Commitizen** to keep versions and changelog updates simple.
+## Generate a project root for one skill/template
 
-### Bump version + update changelog
+```bash
+python scripts/scaffold_project.py --template django_drf --output /path/to/new-project
+python scripts/scaffold_project.py --template data_engineer --output /path/to/new-project
+python scripts/scaffold_project.py --template ai --output /path/to/new-project
+```
+
+If output is not empty, pass `--force` to overwrite.
+
+## Scaffold contents
+
+Each generated project root includes:
+
+- stack/skill-specific source layout
+- `pyproject.toml` with only relevant dependencies
+- `CHANGELOG.md` starter
+
+Scaffold sources are stored under `scaffolds/`.
+
+## Versioning and changelog in this template repository
+
+This repository uses **Commitizen** to keep template versioning/changelog updates simple.
 
 ```bash
 pip install -e .[dev]
@@ -29,16 +49,3 @@ cz bump
 
 - version in `pyproject.toml`
 - `CHANGELOG.md`
-
-## Quick start
-
-```bash
-# for Django + DRF starter dependencies
-pip install -e .[django]
-
-# for Flask starter dependencies
-pip install -e .[flask]
-
-# for FastAPI starter dependencies
-pip install -e .[fastapi]
-```

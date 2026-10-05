@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-drf-service"
+version = "0.1.0"
+description = "Django REST API service"
+requires-python = ">=3.11"
+dependencies = [
+  "django>=5.1",
+  "djangorestframework>=3.15",
+]
